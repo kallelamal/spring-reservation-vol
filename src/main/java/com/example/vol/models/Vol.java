@@ -1,7 +1,5 @@
 package com.example.vol.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -20,6 +18,11 @@ public class Vol implements Serializable {
     @OneToMany(mappedBy="vol",fetch=FetchType.LAZY)
     private List<Reservation> list_reservation;
 
+    @ManyToOne
+    @JoinColumn(name="aeroport")
+    private Aeroport aeroport ;
+
+
     public Vol() {
     }
 
@@ -31,11 +34,13 @@ public class Vol implements Serializable {
         this.list_reservation = list_reservation;
     }
 
-    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive) {
+    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, List<Reservation> list_reservation, Aeroport aeroport) {
         this.date_Depart = date_Depart;
         this.heure_Depart = heure_Depart;
         this.date_Arrive = date_Arrive;
         this.heure_Arrive = heure_Arrive;
+        this.list_reservation = list_reservation;
+        this.aeroport = aeroport;
     }
 
     public long getNum_vol() {
@@ -84,6 +89,14 @@ public class Vol implements Serializable {
 
     public void setList_reservation(List<Reservation> list_reservation) {
         this.list_reservation = list_reservation;
+    }
+
+    public Aeroport getAeroport() {
+        return aeroport;
+    }
+
+    public void setAeroport(Aeroport aeroport) {
+        this.aeroport = aeroport;
     }
 
     @Override

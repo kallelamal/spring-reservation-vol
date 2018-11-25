@@ -14,15 +14,19 @@ public class Aeroport implements Serializable {
     @ManyToOne
     @JoinColumn(name="ville")
     private Ville ville ;
+    @OneToMany(mappedBy="aeroport",fetch=FetchType.LAZY)
+    private List<Vol> list_vol;
 
 
     public Aeroport() {
     }
 
 
-    public Aeroport(String libelle, String adresse, List<Ville> list_Ville) {
+    public Aeroport(String libelle, String adresse, Ville ville, List<Vol> list_vol) {
         this.libelle = libelle;
         this.adresse = adresse;
+        this.ville = ville;
+        this.list_vol = list_vol;
     }
 
     public long getId_aero() {
@@ -57,6 +61,14 @@ public class Aeroport implements Serializable {
         this.ville = ville;
     }
 
+    public List<Vol> getList_vol() {
+        return list_vol;
+    }
+
+    public void setList_vol(List<Vol> list_vol) {
+        this.list_vol = list_vol;
+    }
+
     @Override
     public String toString() {
         return "Aeroport{" +
@@ -64,6 +76,7 @@ public class Aeroport implements Serializable {
                 ", libelle='" + libelle + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", ville=" + ville +
+                ", list_vol=" + list_vol +
                 '}';
     }
 }
