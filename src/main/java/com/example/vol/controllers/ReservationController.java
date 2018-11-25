@@ -1,11 +1,13 @@
 package com.example.vol.controllers;
+
+import com.example.vol.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.vol.repositories.ClientRepository;
 import org.springframework.web.bind.annotation.RestController;
+
 @RestController
-public class ClientController {
+public class ReservationController {
     @Autowired
-    private ClientRepository clientRepository;
+    private ReservationRepository reservationRepository;
 
 
 
