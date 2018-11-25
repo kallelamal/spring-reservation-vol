@@ -1,10 +1,8 @@
 package com.example.vol.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Aeroport implements Serializable {
@@ -13,11 +11,16 @@ public class Aeroport implements Serializable {
     private long id_aero;
     private String libelle;
     private String adresse;
+    @ManyToOne
+    @JoinColumn(name="ville")
+    private Ville ville ;
+
 
     public Aeroport() {
     }
 
-    public Aeroport(String libelle, String adresse) {
+
+    public Aeroport(String libelle, String adresse, List<Ville> list_Ville) {
         this.libelle = libelle;
         this.adresse = adresse;
     }
@@ -46,12 +49,21 @@ public class Aeroport implements Serializable {
         this.adresse = adresse;
     }
 
+    public Ville getVille() {
+        return ville;
+    }
+
+    public void setVille(Ville ville) {
+        this.ville = ville;
+    }
+
     @Override
     public String toString() {
         return "Aeroport{" +
                 "id_aero=" + id_aero +
                 ", libelle='" + libelle + '\'' +
                 ", adresse='" + adresse + '\'' +
+                ", ville=" + ville +
                 '}';
     }
 }

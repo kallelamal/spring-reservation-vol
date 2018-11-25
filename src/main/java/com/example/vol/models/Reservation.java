@@ -12,26 +12,34 @@ public class Reservation implements Serializable {
     private long id_res;
     private Date date;
     private String numero;
+
     @ManyToOne
     @JoinColumn(name="client")
     private Client client ;
+
     @ManyToOne
     @JoinColumn(name="passager")
     private Passager passager ;
 
+    @ManyToOne
+    @JoinColumn(name="vol")
+    private Vol vol ;
+
+
     public Reservation() {
     }
 
-    public Reservation(Date date, String numero, List<Client> list_client, List<Passager> list_passager) {
+    public Reservation(Date date, String numero, List<Client> list_client, List<Passager> list_passager,List<Vol> list_vol) {
         this.date = date;
         this.numero = numero;
     }
 
-    public Reservation(Date date, String numero, Client client, Passager passager) {
+    public Reservation(Date date, String numero, Client client, Passager passager, Vol vol) {
         this.date = date;
         this.numero = numero;
         this.client = client;
         this.passager = passager;
+        this.vol = vol;
     }
 
     public long getId_res() {
@@ -72,6 +80,14 @@ public class Reservation implements Serializable {
 
     public void setPassager(Passager passager) {
         this.passager = passager;
+    }
+
+    public Vol getVol() {
+        return vol;
+    }
+
+    public void setVol(Vol vol) {
+        this.vol = vol;
     }
 
     @Override
