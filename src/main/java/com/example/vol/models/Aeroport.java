@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Aeroport implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id_aero;
+    private long id_aero;
     private String libelle;
     private String adresse;
 
@@ -22,11 +22,11 @@ public class Aeroport implements Serializable {
         this.adresse = adresse;
     }
 
-    public Long getId_aero() {
+    public long getId_aero() {
         return id_aero;
     }
 
-    public void setId_aero(Long id_aero) {
+    public void setId_aero(long id_aero) {
         this.id_aero = id_aero;
     }
 

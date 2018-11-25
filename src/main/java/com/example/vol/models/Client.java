@@ -1,14 +1,13 @@
 package com.example.vol.models;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+import javax.persistence.*;
+
 @Entity
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id_clt;
+    private long id_clt;
     private String login_clt;
     private String password_clt;
     private String cin_clt;
@@ -18,6 +17,8 @@ public class Client implements Serializable {
     private String adresse_clt;
     private String num_tel_clt;
     private String mail_clt;
+    @OneToMany(mappedBy="client",fetch=FetchType.LAZY)
+    private List<Reservation> reservations;
 
     public Client() {
     }
@@ -34,11 +35,24 @@ public class Client implements Serializable {
         this.mail_clt = mail_clt;
     }
 
-    public Long getId_clt() {
+    public Client(String login_clt, String password_clt, String cin_clt, String nom_clt, String prenom_clt, int age_clt, String adresse_clt, String num_tel_clt, String mail_clt, List<Reservation> reservations) {
+        this.login_clt = login_clt;
+        this.password_clt = password_clt;
+        this.cin_clt = cin_clt;
+        this.nom_clt = nom_clt;
+        this.prenom_clt = prenom_clt;
+        this.age_clt = age_clt;
+        this.adresse_clt = adresse_clt;
+        this.num_tel_clt = num_tel_clt;
+        this.mail_clt = mail_clt;
+        this.reservations = reservations;
+    }
+
+    public long getId_clt() {
         return id_clt;
     }
 
-    public void setId_clt(Long id_clt) {
+    public void setId_clt(long id_clt) {
         this.id_clt = id_clt;
     }
 
@@ -115,6 +129,14 @@ public class Client implements Serializable {
         this.mail_clt = mail_clt;
     }
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -128,6 +150,7 @@ public class Client implements Serializable {
                 ", adresse_clt='" + adresse_clt + '\'' +
                 ", num_tel_clt='" + num_tel_clt + '\'' +
                 ", mail_clt='" + mail_clt + '\'' +
+                ", reservations=" + reservations +
                 '}';
     }
 }

@@ -1,20 +1,19 @@
 package com.example.vol.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Passager implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id_pas;
+    private long id_pas;
     private String cin_pas;
     private String nom_pas;
     private String prenom_pas;
-
+    @OneToMany(mappedBy="passager",fetch=FetchType.LAZY)
+    private List<Reservation> reservations;
 
     public Passager() {
     }
@@ -25,11 +24,18 @@ public class Passager implements Serializable {
         this.prenom_pas = prenom_pas;
     }
 
-    public Long getId_pas() {
+    public Passager(String cin_pas, String nom_pas, String prenom_pas, List<Reservation> reservations) {
+        this.cin_pas = cin_pas;
+        this.nom_pas = nom_pas;
+        this.prenom_pas = prenom_pas;
+        this.reservations = reservations;
+    }
+
+    public long getId_pas() {
         return id_pas;
     }
 
-    public void setId_pas(Long id_pas) {
+    public void setId_pas(long id_pas) {
         this.id_pas = id_pas;
     }
 
@@ -57,6 +63,14 @@ public class Passager implements Serializable {
         this.prenom_pas = prenom_pas;
     }
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
     @Override
     public String toString() {
         return "Passager{" +
@@ -64,6 +78,7 @@ public class Passager implements Serializable {
                 ", cin_pas='" + cin_pas + '\'' +
                 ", nom_pas='" + nom_pas + '\'' +
                 ", prenom_pas='" + prenom_pas + '\'' +
+                ", reservations=" + reservations +
                 '}';
     }
 }
