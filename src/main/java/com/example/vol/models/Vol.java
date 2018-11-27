@@ -1,20 +1,27 @@
 package com.example.vol.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
 public class Vol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long num_vol;
+    private long numVol;
     private Date date_Depart;
     private Time heure_Depart;
     private Date date_Arrive;
     private Time heure_Arrive;
+    private String avion;
+    private boolean etat;
+
     @OneToMany(mappedBy="vol",fetch=FetchType.LAZY)
     private List<Reservation> list_reservation;
 
@@ -22,33 +29,35 @@ public class Vol implements Serializable {
     @JoinColumn(name="aeroport")
     private Aeroport aeroport ;
 
-
     public Vol() {
     }
 
-    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, List<Reservation> list_reservation) {
+    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, String avion, boolean etat) {
         this.date_Depart = date_Depart;
         this.heure_Depart = heure_Depart;
         this.date_Arrive = date_Arrive;
         this.heure_Arrive = heure_Arrive;
-        this.list_reservation = list_reservation;
+        this.avion = avion;
+        this.etat = etat;
     }
 
-    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, List<Reservation> list_reservation, Aeroport aeroport) {
+    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, String avion, boolean etat, List<Reservation> list_reservation, Aeroport aeroport) {
         this.date_Depart = date_Depart;
         this.heure_Depart = heure_Depart;
         this.date_Arrive = date_Arrive;
         this.heure_Arrive = heure_Arrive;
+        this.avion = avion;
+        this.etat = etat;
         this.list_reservation = list_reservation;
         this.aeroport = aeroport;
     }
 
-    public long getNum_vol() {
-        return num_vol;
+    public long getNumVol() {
+        return numVol;
     }
 
-    public void setNum_vol(long num_vol) {
-        this.num_vol = num_vol;
+    public void setNumVol(long numVol) {
+        this.numVol = numVol;
     }
 
     public Date getDate_Depart() {
@@ -83,6 +92,7 @@ public class Vol implements Serializable {
         this.heure_Arrive = heure_Arrive;
     }
 
+    @JsonIgnore
     public List<Reservation> getList_reservation() {
         return list_reservation;
     }
@@ -91,6 +101,7 @@ public class Vol implements Serializable {
         this.list_reservation = list_reservation;
     }
 
+    @JsonIgnore
     public Aeroport getAeroport() {
         return aeroport;
     }
@@ -99,15 +110,34 @@ public class Vol implements Serializable {
         this.aeroport = aeroport;
     }
 
+    public String getAvion() {
+        return avion;
+    }
+
+    public void setAvion(String avion) {
+        this.avion = avion;
+    }
+
+    public boolean isEtat() {
+        return etat;
+    }
+
+    public void setEtat(boolean etat) {
+        this.etat = etat;
+    }
+
     @Override
     public String toString() {
         return "Vol{" +
-                "num_vol=" + num_vol +
+                "num_vol=" + numVol +
                 ", date_Depart=" + date_Depart +
                 ", heure_Depart=" + heure_Depart +
                 ", date_Arrive=" + date_Arrive +
                 ", heure_Arrive=" + heure_Arrive +
+                ", avion='" + avion + '\'' +
+                ", etat=" + etat +
                 ", list_reservation=" + list_reservation +
+                ", aeroport=" + aeroport +
                 '}';
     }
 }
