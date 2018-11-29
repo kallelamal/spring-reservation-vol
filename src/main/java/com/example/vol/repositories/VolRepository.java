@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional()
 public interface VolRepository extends JpaRepository<Vol, Long> {
    //List<Vol> findVolByDate(Date dateDepart);
-   /*@Modifying
-   @Query("update vol v SET v.etat= 0 WHERE v.numVol = :numVol")
-   Integer annulerVol(@Param("numVol") long num_vol);*/
+   @Modifying
+   @Query("update Vol v SET v.etat=0 WHERE v.num_vol = :num_vol")
+   int annulerVol(@Param("num_vol") long num_vol);
 }

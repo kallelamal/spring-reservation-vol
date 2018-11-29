@@ -1,6 +1,5 @@
 package com.example.vol.controllers;
 
-
 import com.example.vol.models.Vol;
 import com.example.vol.repositories.VolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +26,23 @@ public class VolController {
         return new ResponseEntity<>(vol, HttpStatus.CREATED);
     }
 
-    /*@RequestMapping(value="/getVolByDate{dateDep}",method=RequestMethod.GET)
-    public List<Vol> getVolByDate(Date dateDep) {
-        return volRepository.findVolByDate(dateDep);
-    }*/
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public Vol updateVol(@RequestBody Vol v) {
         return volRepository.saveAndFlush(v);
     }
-    /*@RequestMapping(value = "/annule", method = RequestMethod.PUT)
-    public Integer annulerVol(@Param("num_vol") long num_vol) {
+
+    @RequestMapping(value = "/annule", method = RequestMethod.PUT)
+    public int annulerVol(@Param("num_vol") long num_vol) {
         return volRepository.annulerVol(num_vol);
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public List<Vol> getAllVols() {
+        return volRepository.findAll();
+    }
+
+      /*@RequestMapping(value="/getVolByDate{dateDep}",method=RequestMethod.GET)
+    public List<Vol> getVolByDate(Date dateDep) {
+        return volRepository.findVolByDate(dateDep);
     }*/
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class Vol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long numVol;
+    private long num_vol;
     private Date date_Depart;
     private Time heure_Depart;
     private Date date_Arrive;
@@ -52,12 +52,12 @@ public class Vol implements Serializable {
         this.aeroport = aeroport;
     }
 
-    public long getNumVol() {
-        return numVol;
+    public long getNum_vol() {
+        return num_vol;
     }
 
-    public void setNumVol(long numVol) {
-        this.numVol = numVol;
+    public void setNum_vol(long num_vol) {
+        this.num_vol = num_vol;
     }
 
     public Date getDate_Depart() {
@@ -129,7 +129,7 @@ public class Vol implements Serializable {
     @Override
     public String toString() {
         return "Vol{" +
-                "num_vol=" + numVol +
+                "num_vol=" + num_vol +
                 ", date_Depart=" + date_Depart +
                 ", heure_Depart=" + heure_Depart +
                 ", date_Arrive=" + date_Arrive +
