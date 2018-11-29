@@ -18,6 +18,11 @@ public class VolController {
     @Autowired
     private VolRepository volRepository;
 
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public List<Vol> getAllVols() {
+        return volRepository.findAll();
+    }
+
     @RequestMapping(value="/create",method=RequestMethod.POST)
     public ResponseEntity<Vol> addVol(@RequestBody Vol v) {
         Vol vol = volRepository.save(v);
@@ -35,12 +40,7 @@ public class VolController {
     public int annulerVol(@Param("num_vol") long num_vol) {
         return volRepository.annulerVol(num_vol);
     }
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Vol> getAllVols() {
-        return volRepository.findAll();
-    }
-
+    
       /*@RequestMapping(value="/getVolByDate{dateDep}",method=RequestMethod.GET)
     public List<Vol> getVolByDate(Date dateDep) {
         return volRepository.findVolByDate(dateDep);
