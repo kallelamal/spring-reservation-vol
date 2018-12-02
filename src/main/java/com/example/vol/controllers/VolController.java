@@ -40,7 +40,7 @@ public class VolController {
     public int annulerVol(@Param("num_vol") long num_vol) {
         return volRepository.annulerVol(num_vol);
     }
-    
+
       /*@RequestMapping(value="/getVolByDate{dateDep}",method=RequestMethod.GET)
     public List<Vol> getVolByDate(Date dateDep) {
         return volRepository.findVolByDate(dateDep);

@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id_clt;
+    private long idClt;
     private String login_clt;
     private String password_clt;
     private String cin_clt;
@@ -48,12 +48,12 @@ public class Client implements Serializable {
         this.reservations = reservations;
     }
 
-    public long getId_clt() {
-        return id_clt;
+    public long getIdClt() {
+        return idClt;
     }
 
-    public void setId_clt(long id_clt) {
-        this.id_clt = id_clt;
+    public void setIdClt(long idClt) {
+        this.idClt = idClt;
     }
 
     public String getNom_clt() {
@@ -140,7 +140,7 @@ public class Client implements Serializable {
     @Override
     public String toString() {
         return "Client{" +
-                "id_clt=" + id_clt +
+                "idClt=" + idClt +
                 ", login_clt='" + login_clt + '\'' +
                 ", password_clt='" + password_clt + '\'' +
                 ", cin_clt='" + cin_clt + '\'' +

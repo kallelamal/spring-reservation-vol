@@ -8,59 +8,59 @@ import java.util.List;
 public class Passager implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id_pas;
-    private String cin_pas;
-    private String nom_pas;
-    private String prenom_pas;
+    private long idPas;
+    private String cinPas;
+    private String nomPas;
+    private String prenomPas;
     @OneToMany(mappedBy="passager",fetch=FetchType.LAZY)
     private List<Reservation> reservations;
 
     public Passager() {
     }
 
-    public Passager(String cin_pas, String nom_pas, String prenom_pas) {
-        this.cin_pas = cin_pas;
-        this.nom_pas = nom_pas;
-        this.prenom_pas = prenom_pas;
+    public Passager(String cinPas, String nomPas, String prenomPas) {
+        this.cinPas = cinPas;
+        this.nomPas = nomPas;
+        this.prenomPas = prenomPas;
     }
 
-    public Passager(String cin_pas, String nom_pas, String prenom_pas, List<Reservation> reservations) {
-        this.cin_pas = cin_pas;
-        this.nom_pas = nom_pas;
-        this.prenom_pas = prenom_pas;
+    public Passager(String cinPas, String nomPas, String prenomPas, List<Reservation> reservations) {
+        this.cinPas = cinPas;
+        this.nomPas = nomPas;
+        this.prenomPas = prenomPas;
         this.reservations = reservations;
     }
 
-    public long getId_pas() {
-        return id_pas;
+    public long getIdPas() {
+        return idPas;
     }
 
-    public void setId_pas(long id_pas) {
-        this.id_pas = id_pas;
+    public void setIdPas(long idPas) {
+        this.idPas = idPas;
     }
 
-    public String getCin_pas() {
-        return cin_pas;
+    public String getCinPas() {
+        return cinPas;
     }
 
-    public void setCin_pas(String cin_pas) {
-        this.cin_pas = cin_pas;
+    public void setCinPas(String cinPas) {
+        this.cinPas = cinPas;
     }
 
-    public String getNom_pas() {
-        return nom_pas;
+    public String getNomPas() {
+        return nomPas;
     }
 
-    public void setNom_pas(String nom_pas) {
-        this.nom_pas = nom_pas;
+    public void setNomPas(String nomPas) {
+        this.nomPas = nomPas;
     }
 
-    public String getPrenom_pas() {
-        return prenom_pas;
+    public String getPrenomPas() {
+        return prenomPas;
     }
 
-    public void setPrenom_pas(String prenom_pas) {
-        this.prenom_pas = prenom_pas;
+    public void setPrenomPas(String prenomPas) {
+        this.prenomPas = prenomPas;
     }
 
     public List<Reservation> getReservations() {
@@ -74,10 +74,10 @@ public class Passager implements Serializable {
     @Override
     public String toString() {
         return "Passager{" +
-                "id_pas=" + id_pas +
-                ", cin_pas='" + cin_pas + '\'' +
-                ", nom_pas='" + nom_pas + '\'' +
-                ", prenom_pas='" + prenom_pas + '\'' +
+                "idPas=" + idPas +
+                ", cinPas='" + cinPas + '\'' +
+                ", nomPas='" + nomPas + '\'' +
+                ", prenomPas='" + prenomPas + '\'' +
                 ", reservations=" + reservations +
                 '}';
     }

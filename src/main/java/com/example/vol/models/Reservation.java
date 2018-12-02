@@ -98,6 +98,7 @@ public class Reservation implements Serializable {
                 ", numero='" + numero + '\'' +
                 ", client=" + client +
                 ", passager=" + passager +
+                ", vol=" + vol +
                 '}';
     }
 }
