@@ -29,11 +29,6 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(Date date, String numero, List<Client> list_client, List<Passager> list_passager,List<Vol> list_vol) {
-        this.date = date;
-        this.numero = numero;
-    }
-
     public Reservation(Date date, String numero, Client client, Passager passager, Vol vol) {
         this.date = date;
         this.numero = numero;

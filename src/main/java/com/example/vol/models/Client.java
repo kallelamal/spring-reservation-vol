@@ -8,8 +8,8 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long idClt;
-    private String login_clt;
-    private String password_clt;
+    private String loginClt;
+    private String passwordClt;
     private String cin_clt;
     private String nom_clt;
     private String prenom_clt;
@@ -23,9 +23,14 @@ public class Client implements Serializable {
     public Client() {
     }
 
-    public Client(String login_clt, String password_clt, String cin_clt, String nom_clt, String prenom_clt, int age_clt, String adresse_clt, String num_tel_clt, String mail_clt) {
-        this.login_clt = login_clt;
-        this.password_clt = password_clt;
+    public Client(String loginClt, String passwordClt) {
+        this.loginClt = loginClt;
+        this.passwordClt = passwordClt;
+    }
+
+    public Client(String loginClt, String passwordClt, String cin_clt, String nom_clt, String prenom_clt, int age_clt, String adresse_clt, String num_tel_clt, String mail_clt) {
+        this.loginClt = loginClt;
+        this.passwordClt = passwordClt;
         this.cin_clt = cin_clt;
         this.nom_clt = nom_clt;
         this.prenom_clt = prenom_clt;
@@ -35,9 +40,9 @@ public class Client implements Serializable {
         this.mail_clt = mail_clt;
     }
 
-    public Client(String login_clt, String password_clt, String cin_clt, String nom_clt, String prenom_clt, int age_clt, String adresse_clt, String num_tel_clt, String mail_clt, List<Reservation> reservations) {
-        this.login_clt = login_clt;
-        this.password_clt = password_clt;
+    public Client(String loginClt, String passwordClt, String cin_clt, String nom_clt, String prenom_clt, int age_clt, String adresse_clt, String num_tel_clt, String mail_clt, List<Reservation> reservations) {
+        this.loginClt = loginClt;
+        this.passwordClt = passwordClt;
         this.cin_clt = cin_clt;
         this.nom_clt = nom_clt;
         this.prenom_clt = prenom_clt;
@@ -89,20 +94,20 @@ public class Client implements Serializable {
     }
 
 
-    public String getLogin_clt() {
-        return login_clt;
+    public String getloginClt() {
+        return loginClt;
     }
 
-    public void setLogin_clt(String login_clt) {
-        this.login_clt = login_clt;
+    public void setloginClt(String loginClt) {
+        this.loginClt = loginClt;
     }
 
-    public String getPassword_clt() {
-        return password_clt;
+    public String getpasswordClt() {
+        return passwordClt;
     }
 
-    public void setPassword_clt(String password_clt) {
-        this.password_clt = password_clt;
+    public void setpasswordClt(String passwordClt) {
+        this.passwordClt = passwordClt;
     }
 
     public String getCin_clt() {
@@ -141,8 +146,8 @@ public class Client implements Serializable {
     public String toString() {
         return "Client{" +
                 "idClt=" + idClt +
-                ", login_clt='" + login_clt + '\'' +
-                ", password_clt='" + password_clt + '\'' +
+                ", loginClt='" + loginClt + '\'' +
+                ", passwordClt='" + passwordClt + '\'' +
                 ", cin_clt='" + cin_clt + '\'' +
                 ", nom_clt='" + nom_clt + '\'' +
                 ", prenom_clt='" + prenom_clt + '\'' +

@@ -6,10 +6,7 @@ import com.example.vol.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,12 +31,12 @@ public class ReservationController {
     }
 
     @RequestMapping(value = "/listClient/{idClt}", method = RequestMethod.GET)
-    public List<Reservation> getReservationsByClient(@RequestBody long idClt) {
+    public List<Reservation> getReservationsByClient(@PathVariable long idClt) {
         return reservationRepository.findAllByClient_IdClt(idClt);
     }
 
     @RequestMapping(value = "/listPassager/{idPas}", method = RequestMethod.GET)
-    public List<Reservation> getReservationsByPassager(@RequestBody long idPas) {
+    public List<Reservation> getReservationsByPassager(@PathVariable long idPas) {
         return reservationRepository.findAllByPassager_IdPas(idPas);
     }
 

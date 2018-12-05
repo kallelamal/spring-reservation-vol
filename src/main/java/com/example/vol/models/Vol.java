@@ -20,33 +20,36 @@ public class Vol implements Serializable {
     private Date date_Arrive;
     private Time heure_Arrive;
     private String avion;
+    private int prix;
     private boolean etat;
 
-    @OneToMany(mappedBy="vol",fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "vol", fetch = FetchType.LAZY)
     private List<Reservation> list_reservation;
 
     @ManyToOne
-    @JoinColumn(name="aeroport")
-    private Aeroport aeroport ;
+    @JoinColumn(name = "aeroport")
+    private Aeroport aeroport;
 
     public Vol() {
     }
 
-    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, String avion, boolean etat) {
+    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, String avion, int prix, boolean etat) {
         this.date_Depart = date_Depart;
         this.heure_Depart = heure_Depart;
         this.date_Arrive = date_Arrive;
         this.heure_Arrive = heure_Arrive;
         this.avion = avion;
+        this.prix = prix;
         this.etat = etat;
     }
 
-    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, String avion, boolean etat, List<Reservation> list_reservation, Aeroport aeroport) {
+    public Vol(Date date_Depart, Time heure_Depart, Date date_Arrive, Time heure_Arrive, String avion, int prix, boolean etat, List<Reservation> list_reservation, Aeroport aeroport) {
         this.date_Depart = date_Depart;
         this.heure_Depart = heure_Depart;
         this.date_Arrive = date_Arrive;
         this.heure_Arrive = heure_Arrive;
         this.avion = avion;
+        this.prix = prix;
         this.etat = etat;
         this.list_reservation = list_reservation;
         this.aeroport = aeroport;
@@ -126,6 +129,14 @@ public class Vol implements Serializable {
         this.etat = etat;
     }
 
+    public int getPrix() {
+        return prix;
+    }
+
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
+
     @Override
     public String toString() {
         return "Vol{" +
@@ -135,6 +146,7 @@ public class Vol implements Serializable {
                 ", date_Arrive=" + date_Arrive +
                 ", heure_Arrive=" + heure_Arrive +
                 ", avion='" + avion + '\'' +
+                ", prix=" + prix +
                 ", etat=" + etat +
                 ", list_reservation=" + list_reservation +
                 ", aeroport=" + aeroport +
