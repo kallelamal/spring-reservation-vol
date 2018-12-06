@@ -8,34 +8,32 @@ import java.util.List;
 public class Passager implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long idPas;
+    private int idPas;
     private String cinPas;
     private String nomPas;
     private String prenomPas;
-    @OneToMany(mappedBy="passager",fetch=FetchType.LAZY)
-    private List<Reservation> reservations;
+    private int agePas;
+
+    @ManyToOne
+    @JoinColumn(name="reservation")
+    private Reservation reservation;
 
     public Passager() {
     }
 
-    public Passager(String cinPas, String nomPas, String prenomPas) {
+    public Passager(String cinPas, String nomPas, String prenomPas, int agePas, Reservation reservation) {
         this.cinPas = cinPas;
         this.nomPas = nomPas;
         this.prenomPas = prenomPas;
+        this.agePas = agePas;
+        this.reservation = reservation;
     }
 
-    public Passager(String cinPas, String nomPas, String prenomPas, List<Reservation> reservations) {
-        this.cinPas = cinPas;
-        this.nomPas = nomPas;
-        this.prenomPas = prenomPas;
-        this.reservations = reservations;
-    }
-
-    public long getIdPas() {
+    public int getIdPas() {
         return idPas;
     }
 
-    public void setIdPas(long idPas) {
+    public void setIdPas(int idPas) {
         this.idPas = idPas;
     }
 
@@ -63,12 +61,20 @@ public class Passager implements Serializable {
         this.prenomPas = prenomPas;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
+    public int getAgePas() {
+        return agePas;
     }
 
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
+    public void setAgePas(int agePas) {
+        this.agePas = agePas;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 
     @Override
@@ -78,7 +84,8 @@ public class Passager implements Serializable {
                 ", cinPas='" + cinPas + '\'' +
                 ", nomPas='" + nomPas + '\'' +
                 ", prenomPas='" + prenomPas + '\'' +
-                ", reservations=" + reservations +
+                ", agePas=" + agePas +
+                ", reservation=" + reservation +
                 '}';
     }
 }

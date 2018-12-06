@@ -31,13 +31,9 @@ public class ReservationController {
     }
 
     @RequestMapping(value = "/listClient/{idClt}", method = RequestMethod.GET)
-    public List<Reservation> getReservationsByClient(@PathVariable long idClt) {
+    public List<Reservation> getReservationsByClient(@PathVariable int idClt) {
         return reservationRepository.findAllByClient_IdClt(idClt);
     }
 
-    @RequestMapping(value = "/listPassager/{idPas}", method = RequestMethod.GET)
-    public List<Reservation> getReservationsByPassager(@PathVariable long idPas) {
-        return reservationRepository.findAllByPassager_IdPas(idPas);
-    }
 
 }

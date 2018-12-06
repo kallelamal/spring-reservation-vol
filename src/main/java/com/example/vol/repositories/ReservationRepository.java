@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional()
-public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    List<Reservation> findAllByClient_IdClt(long idClt);
-    List<Reservation> findAllByPassager_IdPas(long id_pas);
+public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+    List<Reservation> findAllByClient_IdClt(int idClt);
 }

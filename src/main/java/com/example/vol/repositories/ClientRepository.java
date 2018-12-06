@@ -7,11 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 @Transactional()
-public interface ClientRepository extends JpaRepository<Client, Long> {
-
-    /*@Query("select i from Client i where i.login like :login  and i.password like :password")
-    Client signinClient(@Param("login") String login, @Param("password") String password);*/
-
+public interface ClientRepository extends JpaRepository<Client, Integer> {
     Client findByLoginCltAndPasswordClt(String login_clt, String password_clt);
-
 }

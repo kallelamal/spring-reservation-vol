@@ -1,4 +1,5 @@
 package com.example.vol.models;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -7,16 +8,17 @@ import javax.persistence.*;
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long idClt;
+    private int idClt;
     private String loginClt;
     private String passwordClt;
-    private String cin_clt;
-    private String nom_clt;
-    private String prenom_clt;
-    private int age_clt;
-    private String adresse_clt;
-    private String num_tel_clt;
-    private String mail_clt;
+    private String cinClt;
+    private String nomClt;
+    private String prenomClt;
+    private int ageClt;
+    private String adresseClt;
+    private String numTel;
+    private String mailClt;
+
     @OneToMany(mappedBy="client",fetch=FetchType.LAZY)
     private List<Reservation> reservations;
 
@@ -28,110 +30,105 @@ public class Client implements Serializable {
         this.passwordClt = passwordClt;
     }
 
-    public Client(String loginClt, String passwordClt, String cin_clt, String nom_clt, String prenom_clt, int age_clt, String adresse_clt, String num_tel_clt, String mail_clt) {
-        this.loginClt = loginClt;
-        this.passwordClt = passwordClt;
-        this.cin_clt = cin_clt;
-        this.nom_clt = nom_clt;
-        this.prenom_clt = prenom_clt;
-        this.age_clt = age_clt;
-        this.adresse_clt = adresse_clt;
-        this.num_tel_clt = num_tel_clt;
-        this.mail_clt = mail_clt;
+    public Client(String cinClt, String nomClt, String prenomClt, int ageClt, String adresseClt, String numTel, String mailClt) {
+        this.cinClt = cinClt;
+        this.nomClt = nomClt;
+        this.prenomClt = prenomClt;
+        this.ageClt = ageClt;
+        this.adresseClt = adresseClt;
+        this.numTel = numTel;
+        this.mailClt = mailClt;
     }
 
-    public Client(String loginClt, String passwordClt, String cin_clt, String nom_clt, String prenom_clt, int age_clt, String adresse_clt, String num_tel_clt, String mail_clt, List<Reservation> reservations) {
-        this.loginClt = loginClt;
-        this.passwordClt = passwordClt;
-        this.cin_clt = cin_clt;
-        this.nom_clt = nom_clt;
-        this.prenom_clt = prenom_clt;
-        this.age_clt = age_clt;
-        this.adresse_clt = adresse_clt;
-        this.num_tel_clt = num_tel_clt;
-        this.mail_clt = mail_clt;
+    public Client(String cinClt, String nomClt, String prenomClt, int ageClt, String adresseClt, String numTel, String mailClt, List<Reservation> reservations) {
+        this.cinClt = cinClt;
+        this.nomClt = nomClt;
+        this.prenomClt = prenomClt;
+        this.ageClt = ageClt;
+        this.adresseClt = adresseClt;
+        this.numTel = numTel;
+        this.mailClt = mailClt;
         this.reservations = reservations;
     }
 
-    public long getIdClt() {
+    public int getIdClt() {
         return idClt;
     }
 
-    public void setIdClt(long idClt) {
+    public void setIdClt(int idClt) {
         this.idClt = idClt;
     }
 
-    public String getNom_clt() {
-        return nom_clt;
-    }
-
-    public void setNom_clt(String nom_clt) {
-        this.nom_clt = nom_clt;
-    }
-
-    public String getPrenom_clt() {
-        return prenom_clt;
-    }
-
-    public void setPrenom_clt(String prenom_clt) {
-        this.prenom_clt = prenom_clt;
-    }
-
-    public String getAdresse_clt() {
-        return adresse_clt;
-    }
-
-    public void setAdresse_clt(String adresse_clt) {
-        this.adresse_clt = adresse_clt;
-    }
-
-    public String getNum_tel_clt() {
-        return num_tel_clt;
-    }
-
-    public void setNum_tel_clt(String num_tel_clt) {
-        this.num_tel_clt = num_tel_clt;
-    }
-
-
-    public String getloginClt() {
+    public String getLoginClt() {
         return loginClt;
     }
 
-    public void setloginClt(String loginClt) {
+    public void setLoginClt(String loginClt) {
         this.loginClt = loginClt;
     }
 
-    public String getpasswordClt() {
+    public String getPasswordClt() {
         return passwordClt;
     }
 
-    public void setpasswordClt(String passwordClt) {
+    public void setPasswordClt(String passwordClt) {
         this.passwordClt = passwordClt;
     }
 
-    public String getCin_clt() {
-        return cin_clt;
+    public String getCinClt() {
+        return cinClt;
     }
 
-    public void setCin_clt(String cin_clt) {
-        this.cin_clt = cin_clt;
+    public void setCinClt(String cinClt) {
+        this.cinClt = cinClt;
     }
 
-    public int getAge_clt() {
-        return age_clt;
+    public String getNomClt() {
+        return nomClt;
     }
 
-    public void setAge_clt(int age_clt) {
-        this.age_clt = age_clt;
+    public void setNomClt(String nomClt) {
+        this.nomClt = nomClt;
     }
 
-    public String getMail_clt() {
-        return mail_clt;
+    public String getPrenomClt() {
+        return prenomClt;
     }
 
-    public void setMail_clt(String mail_clt) {
-        this.mail_clt = mail_clt;
+    public void setPrenomClt(String prenomClt) {
+        this.prenomClt = prenomClt;
+    }
+
+    public int getAgeClt() {
+        return ageClt;
+    }
+
+    public void setAgeClt(int ageClt) {
+        this.ageClt = ageClt;
+    }
+
+    public String getAdresseClt() {
+        return adresseClt;
+    }
+
+    public void setAdresseClt(String adresseClt) {
+        this.adresseClt = adresseClt;
+    }
+
+    public String getNumTel() {
+        return numTel;
+    }
+
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
+    }
+
+    public String getMailClt() {
+        return mailClt;
+    }
+
+    public void setMailClt(String mailClt) {
+        this.mailClt = mailClt;
     }
 
     public List<Reservation> getReservations() {
@@ -148,13 +145,13 @@ public class Client implements Serializable {
                 "idClt=" + idClt +
                 ", loginClt='" + loginClt + '\'' +
                 ", passwordClt='" + passwordClt + '\'' +
-                ", cin_clt='" + cin_clt + '\'' +
-                ", nom_clt='" + nom_clt + '\'' +
-                ", prenom_clt='" + prenom_clt + '\'' +
-                ", age_clt=" + age_clt +
-                ", adresse_clt='" + adresse_clt + '\'' +
-                ", num_tel_clt='" + num_tel_clt + '\'' +
-                ", mail_clt='" + mail_clt + '\'' +
+                ", cinClt='" + cinClt + '\'' +
+                ", nomClt='" + nomClt + '\'' +
+                ", prenomClt='" + prenomClt + '\'' +
+                ", ageClt=" + ageClt +
+                ", adresseClt='" + adresseClt + '\'' +
+                ", numTel='" + numTel + '\'' +
+                ", mailClt='" + mailClt + '\'' +
                 ", reservations=" + reservations +
                 '}';
     }

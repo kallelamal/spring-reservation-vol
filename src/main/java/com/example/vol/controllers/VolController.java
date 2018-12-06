@@ -36,13 +36,18 @@ public class VolController {
         return volRepository.saveAndFlush(v);
     }
 
-    @RequestMapping(value = "/annule", method = RequestMethod.PUT)
-    public int annulerVol(@Param("num_vol") long num_vol) {
-        return volRepository.annulerVol(num_vol);
+    @RequestMapping(value = "/annule/{numVol}", method = RequestMethod.PUT)
+    public int annulerVol(@PathVariable int numVol) {
+        return volRepository.annulerVol(numVol);
     }
 
-      /*@RequestMapping(value="/getVolByDate{dateDep}",method=RequestMethod.GET)
-    public List<Vol> getVolByDate(Date dateDep) {
-        return volRepository.findVolByDate(dateDep);
-    }*/
+    @RequestMapping(value = "/verifPlaces/{numVol}", method = RequestMethod.GET)
+    int verifPlaces(@PathVariable int numVol){
+        return volRepository.nbrePlaceRes(numVol);
+    }
+
+    @RequestMapping(value="/searchVols/{dateDep}/{villedep}/{villeArr}",method=RequestMethod.GET)
+    public List<Vol> searchVols(@PathVariable Date dateDep,@PathVariable String villedep,@PathVariable String villeArr) {
+        return volRepository.findAllByDateDepartAndVilleDepartAndVilleArrive(dateDep,villedep,villeArr);
+    }
 }

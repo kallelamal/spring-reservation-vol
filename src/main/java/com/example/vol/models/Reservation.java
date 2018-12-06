@@ -9,56 +9,59 @@ import java.util.List;
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id_res;
-    private Date date;
-    private String numero;
+    private int idRes;
+    private Date dateRes;
+    private int nbrePlace;
 
     @ManyToOne
     @JoinColumn(name="client")
     private Client client ;
 
-    @ManyToOne
-    @JoinColumn(name="passager")
-    private Passager passager ;
+    @OneToMany(mappedBy="reservation",fetch=FetchType.LAZY)
+    private List<Passager> ListPassagers ;
 
     @ManyToOne
     @JoinColumn(name="vol")
     private Vol vol ;
 
-
     public Reservation() {
     }
 
-    public Reservation(Date date, String numero, Client client, Passager passager, Vol vol) {
-        this.date = date;
-        this.numero = numero;
+    public Reservation(Date dateRes, int nbrePlace) {
+        this.dateRes = dateRes;
+        this.nbrePlace = nbrePlace;
+    }
+
+    public Reservation(Date dateRes, int nbrePlace, Client client, List<Passager> listPassagers, Vol vol) {
+        this.dateRes = dateRes;
+        this.nbrePlace = nbrePlace;
         this.client = client;
-        this.passager = passager;
+        ListPassagers = listPassagers;
         this.vol = vol;
     }
 
-    public long getId_res() {
-        return id_res;
+    public int getIdRes() {
+        return idRes;
     }
 
-    public void setId_res(long id_res) {
-        this.id_res = id_res;
+    public void setIdRes(int idRes) {
+        this.idRes = idRes;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateRes() {
+        return dateRes;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateRes(Date dateRes) {
+        this.dateRes = dateRes;
     }
 
-    public String getNumero() {
-        return numero;
+    public int getNbrePlace() {
+        return nbrePlace;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setNbrePlace(int nbrePlace) {
+        this.nbrePlace = nbrePlace;
     }
 
     public Client getClient() {
@@ -69,12 +72,12 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
-    public Passager getPassager() {
-        return passager;
+    public List<Passager> getListPassagers() {
+        return ListPassagers;
     }
 
-    public void setPassager(Passager passager) {
-        this.passager = passager;
+    public void setListPassagers(List<Passager> listPassagers) {
+        ListPassagers = listPassagers;
     }
 
     public Vol getVol() {
@@ -88,11 +91,11 @@ public class Reservation implements Serializable {
     @Override
     public String toString() {
         return "Reservation{" +
-                "id_res=" + id_res +
-                ", date=" + date +
-                ", numero='" + numero + '\'' +
+                "idRes=" + idRes +
+                ", dateRes=" + dateRes +
+                ", nbrePlace=" + nbrePlace +
                 ", client=" + client +
-                ", passager=" + passager +
+                ", ListPassagers=" + ListPassagers +
                 ", vol=" + vol +
                 '}';
     }

@@ -37,8 +37,8 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Client> getReservationsByClient(@RequestBody Client client) {
-        Client result = clientRepository.findByLoginCltAndPasswordClt(client.getloginClt(), client.getpasswordClt());
+    public ResponseEntity<Client> signInClient(@RequestBody Client client) {
+        Client result = clientRepository.findByLoginCltAndPasswordClt(client.getLoginClt(), client.getPasswordClt());
         if (result == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(result, HttpStatus.OK);
