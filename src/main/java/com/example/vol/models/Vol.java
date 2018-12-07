@@ -1,5 +1,7 @@
 package com.example.vol.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -138,6 +140,7 @@ public class Vol implements Serializable {
         this.nbrePlaceRestant = nbrePlaceRestant;
     }
 
+    @JsonIgnore
     public List<Reservation> getListReservations() {
         return listReservations;
     }
