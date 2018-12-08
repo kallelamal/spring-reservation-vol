@@ -1,5 +1,7 @@
 package com.example.vol.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -8,21 +10,21 @@ import java.util.List;
 @Entity
 public class Reservation implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRes;
     private Date dateRes;
     private int nbrePlace;
 
     @ManyToOne
-    @JoinColumn(name="client")
-    private Client client ;
+    @JoinColumn(name = "client")
+    private Client client;
 
-    @OneToMany(mappedBy="reservation",fetch=FetchType.LAZY)
-    private List<Passager> ListPassagers ;
+    @OneToMany(mappedBy = "reservation", fetch = FetchType.LAZY)
+    private List<Passager> ListPassagers;
 
     @ManyToOne
-    @JoinColumn(name="vol")
-    private Vol vol ;
+    @JoinColumn(name = "vol")
+    private Vol vol;
 
     public Reservation() {
     }
@@ -64,6 +66,7 @@ public class Reservation implements Serializable {
         this.nbrePlace = nbrePlace;
     }
 
+    @JsonIgnore
     public Client getClient() {
         return client;
     }
