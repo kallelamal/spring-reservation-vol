@@ -46,8 +46,8 @@ public class VolController {
         return volRepository.nbrePlaceRes(numVol);
     }
 
-    @RequestMapping(value="/searchVols/{dateDep}/{villedep}/{villeArr}",method=RequestMethod.GET)
-    public List<Vol> searchVols(@PathVariable Date dateDep,@PathVariable String villedep,@PathVariable String villeArr) {
-        return volRepository.findAllByDateDepartAndVilleDepartAndVilleArrive(dateDep,villedep,villeArr);
+    @RequestMapping(value="/searchVols/",method=RequestMethod.POST)
+    public List<Vol> searchVols(@RequestBody Vol vol) {
+        return volRepository.findAllByDateDepartAndVilleDepartAndVilleArrive(vol.getDateDepart(),vol.getVilleDepart(),vol.getVilleArrive());
     }
 }

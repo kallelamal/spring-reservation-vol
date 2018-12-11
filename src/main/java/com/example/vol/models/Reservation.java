@@ -66,7 +66,6 @@ public class Reservation implements Serializable {
         this.nbrePlace = nbrePlace;
     }
 
-    @JsonIgnore
     public Client getClient() {
         return client;
     }

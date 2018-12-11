@@ -1,6 +1,7 @@
 package com.example.vol.controllers;
 
 import com.example.vol.models.Client;
+import com.example.vol.models.Reservation;
 import com.example.vol.models.Vol;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.vol.repositories.ClientRepository;
@@ -42,5 +43,9 @@ public class ClientController {
         if (result == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    @RequestMapping(value = "/listres/{id}", method = RequestMethod.GET)
+    public List<Reservation> getListClientsById(@PathVariable int id) {
+      return clientRepository.findByIdClt(id).getReservations();
     }
 }

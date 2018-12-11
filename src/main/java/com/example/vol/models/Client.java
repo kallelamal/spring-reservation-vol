@@ -1,5 +1,7 @@
 package com.example.vol.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -130,7 +132,7 @@ public class Client implements Serializable {
     public void setMailClt(String mailClt) {
         this.mailClt = mailClt;
     }
-
+    @JsonIgnore
     public List<Reservation> getReservations() {
         return reservations;
     }
