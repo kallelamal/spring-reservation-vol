@@ -30,10 +30,4 @@ public class ReservationController {
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/listClient/{idClt}", method = RequestMethod.GET)
-    public List<Reservation> getReservationsByClient(@PathVariable int idClt) {
-        return reservationRepository.findAllByClient_IdClt(idClt);
-    }
-
-
 }

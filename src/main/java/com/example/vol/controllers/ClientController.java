@@ -2,14 +2,11 @@ package com.example.vol.controllers;
 
 import com.example.vol.models.Client;
 import com.example.vol.models.Reservation;
-import com.example.vol.models.Vol;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.vol.repositories.ClientRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -44,8 +41,9 @@ public class ClientController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
     @RequestMapping(value = "/listres/{id}", method = RequestMethod.GET)
-    public List<Reservation> getListClientsById(@PathVariable int id) {
+    public List<Reservation> getListReservationsById(@PathVariable int id) {
       return clientRepository.findByIdClt(id).getReservations();
     }
 }

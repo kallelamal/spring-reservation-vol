@@ -13,8 +13,5 @@ import java.util.List;
 @Transactional()
 public interface ClientRepository extends JpaRepository<Client, Integer> {
     Client findByLoginCltAndPasswordClt(String login_clt, String password_clt);
-
     Client findByIdClt(int id);
-   /* @Query("select nbrePlaceRestant from Vol v WHERE v.numVol = :numVol")
-    int nbrePlaceRes(@Param("numVol") int num_vol);}*/
 }
